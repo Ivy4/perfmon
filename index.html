@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<style>
+  :root {
+    --side-space: 50px;
+    --side-space-mobile: 14px;
+    --blue: #194978;
+    --lite-blue: #5485bb;
+    /* #002c57 */
+    --gray: #f4f4f4;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  ul {
+    padding: 25px;
+  }
+
+  h3 {
+    margin: 0 !important;
+  }
+
+  .prof {
+    width: 100%;
+    margin: 1em 0;
+    position: relative;
+    overflow: hidden;
+    min-width: 250px;
+    border-radius: 10%;
+  }
+
+  /* .profpic-container {
+    position: relative;
+
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 5%;
+    margin-right: 50px;
+  } */
+
+  .profpic {
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover; */
+    width: 100%;
+    height: 100%;
+    filter: grayscale(1);
+
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 5%;
+    margin-right: 50px;
+  }
+
+  .prof-container {
+    display: flex;
+  }
+
+  @media (max-width: 799px) {
+    .prof-container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .profpic {
+      margin: 50px 0;
+      max-width: unset;
+      max-height: unset;
+    }
+  }
+
+  .grid-container {
+    display: grid;
+    align-items: stretch;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 2fr;
+    gap: 50px;
+    margin-right: 20%;
+    /* grid-template-areas: ". ."; */
+  }
+
+  li {
+    position: relative;
+    list-style: none;
+    padding: 16px 8px 16px 26px;
+  }
+
+  li::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    -moz-border-radius: 7.5px;
+    -webkit-border-radius: 7.5px;
+    border-radius: 7.5px;
+    background-color: var(--lite-blue);
+    left: 0px;
+    top: 20px;
+    position: absolute;
+  }
+
+  ul.nah li::before {
+    display: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  h2 {
+    background-color: var(--blue);
+    padding: 25px var(--side-space);
+    color: white;
+    margin: 0;
+  }
+
+  @media (max-width: 799px) {
+    h2 {
+      padding-left: var(--side-space-mobile)
+    }
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    padding-bottom: 5px;
+    display: inline-block;
+    margin: 10px 0;
+    /* border-bottom: 2px solid; */
+  }
+
+  .nav {
+    padding: 12px var(--side-space);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .nav-group {
+    display: flex;
+    width: 33%;
+  }
+
+  .nav a {
+    text-decoration: none;
+    padding: 25px 0;
+    display: inline-block;
+    font-weight: bolder;
+    color: var(--blue);
+    transition: background-color 0.6s ease;
+    text-align: center;
+    flex-grow: 1;
+  }
+
+  nav a:hover {
+    background-color: var(--gray);
+  }
+
+  .logo-img {
+    height: 50px;
+    margin-right: 12px;
+  }
+
+  .article-body {
+    margin: 40px var(--side-space);
+  }
+
+  .bullet-connector {
+    width: 4px;
+    background-color: var(--lite-blue);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .header {
+    color: white;
+    /* background-image: url(permon-splash.jpg); */
+    /* url(https://indahs.files.wordpress.com/2016/06/p5291477-wordpress.jpg) */
+    background-image: url(sploosh.jpg);
+    /* background-image: url(https://images.squarespace-cdn.com/content/v1/54dbdc47e4b08185d28394b5/1560733540969-V6VW4OZ6B1VG5XU1VIG2/ke17ZwdGBToddI8pDm48kGgsG4DY8pd3I-6qccqe49R7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0lCYWGxfdB_uf1_ERfebHZ7pXhhk8fOF4XLswu04J9NRK-bC4ElcmNWvd5QeT71hrQ/20180627_DSF1490.jpg);
+    */
+    background-position: bottom;
+    background-size: cover;
+    height: 380px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: var(--side-space);
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 5px black;
+    font-weight: bolder;
+  }
+
+  .about {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: var(--gray); */
+  }
+
+  .about-img {
+    height: 400px;
+  }
+
+  @media (max-width: 799px) {
+    .nav {
+      padding: var(--side-space-mobile);
+      padding-bottom: 0;
+    }
+
+    .nav-group {
+      width: 100%;
+    }
+
+    .nav a {
+      text-align: left;
+    }
+
+    .header {
+      padding: var(--side-space-mobile);
+      height: 260px;
+      background-size: unset;
+    }
+
+    .article-body {
+      margin: 40px var(--side-space-mobile);
+    }
+  }
+
+  .icon-src {
+    color: white;
+    background-color: #b3b3b3;
+    color: white;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .icon-src a:visited {
+    color: white;
+  }
+
+  .img-cont {
+    position: relative;
+    width: 25%;
+    height: 200px;
+  }
+
+  @media (max-width: 899px) {
+    .img-cont {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 599px) {
+    .img-cont {
+      width: 100%;
+    }
+  }
+
+  .img-cont img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<html>
+
+<head>
+  <title>Performance Monitpring LLC</title>
+  <meta name="viewport"
+    content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Playfair+Display&family=Roboto:wght@300&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="logo">
+      <img class="logo-img" src="PM-border.jpg" />
+      <img class="logo-img" src="text-logo.jpg" />
+    </div>
+    <div class="nav-group">
+      <a href="#services">Services</a>
+      <a href="#about">About Us</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+  <header class="header">
+    <div>
+      <h1>Performance Monitoring, LLC</h1>
+      <p>
+        Helping private and public companies implement successful MWSDBE
+        compliance programs
+      </p>
+    </div>
+  </header>
+
+  <article id="services">
+    <h2>Services</h2>
+    <div class="article-body">
+      <h3>
+        Performance Monitoring, LLC offers a broad range of services to a
+        diverse group of clients.
+      </h3>
+      <p>
+        Services for Public Agencies, Prime Construction Companies and
+        Developers
+      </p>
+      <div style="position: relative; background-color: var(--gray);">
+        <div class="bullet-connector"></div>
+        <ul>
+          <li>
+            Assistance with development and implementation of business
+            diversity programs including compliance, monitoring and tracking
+            procedures and systems.
+          </li>
+          <li>
+            Assessment and evaluation of existing MBE, WBE, DBE and SDVOB
+            Programs and implementation of successful strategies for
+            enhancements.
+          </li>
+          <li>
+            Formulation of strategies for effective adherence to individual
+            contract goals.
+          </li>
+          <li>Auditing and compliance services on individual projects.</li>
+          <li>
+            Guidance related to Good Faith Effort (GFE) requirements pre-award
+            and post award.
+          </li>
+          <li>Development of MWDBE outreach campaigns and strategies.</li>
+          <li>Vetting services related to MWDBE firms.</li>
+        </ul>
+      </div>
+
+      <p>Services for MBE, WBE, DBE and SDVOB Firms</p>
+      <div style="position: relative; background-color: var(--gray);">
+        <div class="bullet-connector"></div>
+        <ul>
+          <li>
+            Formulation of business development and marketing strategies.
+          </li>
+          <li>
+            Assistance with certification process, including completion and
+            submission of electronic application.
+          </li>
+          <li>
+            Assistance with certification appeal process including development
+            of supporting documentation and letter.
+          </li>
+          <li>
+            Development of strategies for securing government contracts.
+          </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </article>
+
+  <article id="about">
+    <h2>About Us</h2>
+    <div class="article-body">
+      <h3>Our Company</h3>
+      <p>
+        Performance Monitoring, LLC is a full-service professional consulting
+        firm specializing in MBE, WBE, DBE and SDVOB federal, state and local
+        compliance regulations. Our clients include public agencies, leading
+        construction companies and developers, as well as MBE, WBE, DBE and
+        SDVOB firms.
+      </p>
+      <p>
+        Performance Monitoring, LLC is a certified MWBE and DBE firm.
+      </p>
+
+      <h3>Our Principals</h3>
+      <p>
+        The principals of Performance Monitoring, LLC, Ida I. Perich and
+        Robert K. Foreman have over 60 years between them of public service
+        experience with a proven record of accomplishment in developing and
+        implementing equal opportunity, civil rights and supplier diversity
+        programs as well as providing auditing and compliance assistance.
+      </p>
+      <div class="prof-container" style="margin-bottom: 50px;">
+
+        <!-- <div class="profpic-container"> -->
+        <img class="profpic" src="ida.jpeg" />
+        <!-- </div> -->
+
+        <div>
+          <h3>Ida I. Perich, President</h3>
+          <p>
+            Prior to establishing Performance Monitoring, LLC, Ms. Perich oversaw
+            The Port Authority of NY and NJ’s Office of Business Diversity and
+            Civil Rights, reporting directly to the agency’s Chief Diversity and
+            Inclusion Officer.
+          </p>
+          <p>
+
+            Ms. Perich managed the Port Authority’s 2017
+            Disparity Study which led to the agency increasing its MWBE
+            participation goal from 17 to 30 percent and she co-authored the
+            corresponding Executive Guide governing the agency’s updated MWBE
+            Program. Under Ms. Perich’s leadership, the office developed and
+            launched innovative capacity building initiatives for MWBEs including
+            construction management training and Mentor-Protégé Programs. Her team
+            also implemented aggressive compliance initiatives which led to
+            unprecedented levels of contracting opportunities for MWBEs in the
+            Port Authority’s capital projects including in the rebuilding of the
+            World Trade Center and redevelopment of the agency’s airports.
+          </p>
+          <p>
+            Ms. Perich has received numerous awards and recognition from a broad range
+            of organizations for her strong leadership and commitment to diversity
+            and inclusion including, DiversityPlus Magazine, Queens Courier,
+            Professional Women in Construction, Women Builder’s Council and the
+            Competitive Edge Conference Committee.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="prof-container">
+        <!-- <div class="profpic-container"> -->
+        <img class="profpic" src="rob.JPG" />
+        <!-- </div> -->
+
+
+        <div>
+          <h3>Robert K. Foreman, Vice President</h3>
+
+          <p>
+            Mr. Foreman is a subject matter expert on the development and
+            implementation MWDBE compliance initiatives and programs. He has
+            consulted with the regions’ major developers and contractors, as well
+            as small, minority and women-owned businesses on compliance and
+            certification matters.
+          </p>
+          <p>
+
+            Prior to establishing Performance Monitoring,
+            LLC, Mr. Foreman oversaw MWDBE compliance efforts on major capital
+            programs at The Port Authority of NY &amp; NJ including airport
+            redevelopment, Superstorm Sandy Redevelopment Program and the Goethals
+            and Bayonne Bridge Modernization.
+          </p>
+          <p>
+            Mr. Foreman led taskforces
+            consisting of staff from Law, Procurement, and Engineering in the
+            development and implementation of procedures, contract language,
+            checklists and reporting forms in order to bring the Port Authority in
+            compliance with federal DBE regulations. He also worked closely with
+            the Office of Inspector General in the development of enhanced
+            procedures and tracking forms to ensure accurate reporting of MWBE
+            participation by prime contractors on Port Authority funded projects.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article id="projects">
+    <h2>Clients/Projects</h2>
+    <div class="article-body">
+      <div>
+        <h3>Clients</h3>
+        <div style="position: relative; background-color: var(--gray);">
+          <div class="bullet-connector"></div>
+          <ul>
+            <li>Iovino Enterprises, LLC</li>
+            <li>J-Track, LLC</li>
+            <li>MLJ Contracting, LLC</li>
+            <li>TC Electric, LLC</li>
+            <li>Welkin Mechanical, LLC</li>
+            <li>Skanska USA Civil Northeast</li>
+            <li>Skanska – Walsh JV</li>
+            <li>Skanska USA Civil West</li>
+            <li>Skanska – Traylor JV</li>
+            <li>Minority Resource Group LLC</li>
+            <li>The Nicholson Corporation</li>
+            <li>KNR Construction LLC</li>
+            <li>Total Electrical Construction Company Inc.</li>
+            <li>Luz Electric Construction LLC</li>
+            <li>American Pallet Recycling, LLC d/b/a APR</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h3>Projects</h3>
+        <div style="position: relative; background-color: var(--gray);">
+          <div class="bullet-connector"></div>
+          <ul>
+            <li>Regional Connector Corridor Project - Los Angeles, CA<br>
+              Los Angeles County Metropolitan Transportation Authority</li>
+            <li>Moynihan Train Hall Project - New York City, NY<br>
+              Empire State Development</li>
+            <li>LaGuardia Airport Central Terminal Replacement Project<br>
+              Port Authority of New York &amp; New Jersey</li>
+            <li>
+              MTAC&amp;D-CH058a – Harold Structures, Part-4 (B/C (Approach Structure)<br>
+              Long Island Railroad
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article id="contact">
+    <h2>Contact</h2>
+    <div class="article-body">
+      <h3>Ida I. Perich, President</h3>
+      <p style="display: flex;align-items: center;">
+        <img src="phone.png" style="width: 20px; margin-right: 10px;" />
+        <a href="tel:917-842-3896">917-842-3896</a>
+      </p>
+      <p style="display: flex;align-items: center;margin-bottom: 60px;">
+        <img src="email.png" style="width: 20px; margin-right: 10px;" />
+        <a href="mailto:iperich@performancemonitoringlllc.com">iperich@performancemonitoringlllc.com</a>
+      </p>
+      <h3>Robert K. Foreman, Vice President</h3>
+      <p style="display: flex;align-items: center;">
+        <img src="phone.png" style="width: 20px; margin-right: 10px;" />
+        <a href="tel:516-306-0676">516-306-0676</a>
+      </p>
+      <p style="display: flex;align-items: center;margin-bottom: 60px;">
+        <img src="email.png" style="width: 20px; margin-right: 10px;" />
+        <a href="mailto:rkforeman@performancemonitoringllc.com">rkforeman@performancemonitoringllc.com</a>
+      </p>
+      <h3>Address</h3>
+      <p style="display: flex;align-items: center;">
+        <img src="location.png" style="width: 20px; margin-right: 10px;" />
+        Performance Monitoring, LLC 73-20 Austin Street, Suite 4Q Forest
+        Hills, NY 11375
+      </p>
+    </div>
+  </article>
+  <article style="display: flex; flex-wrap: wrap;">
+    <div class="img-cont">
+      <img src="lga.jpg" />
+    </div>
+    <div class="img-cont">
+      <img src="moy.png" />
+    </div>
+    <div class="img-cont">
+      <img src="reg-con.jpeg" />
+    </div>
+    <div class="img-cont">
+      <img src="har.jpg" />
+    </div>
+
+  </article>
+  <p class="icon-src">
+    <span>Icons made by <a href="https://www.flaticon.com/authors/those-icons" title="Those Icons">Those Icons</a> from
+      <a href="https://www.flaticon.com/" title="Flaticon">
+        www.flaticon.com</a></span></p>
+</body>
+
+</html>
